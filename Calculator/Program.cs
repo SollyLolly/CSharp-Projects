@@ -15,41 +15,57 @@ namespace Calculator
                 Console.WriteLine("Calculator program");
                 Console.WriteLine("------------");
 
-                Console.WriteLine("Enter a number: ");
-                num1 = Convert.ToDouble(Console.ReadLine());
-
-                Console.WriteLine("Enter a number: ");
-                num2 = Convert.ToDouble(Console.ReadLine());
-
-                Console.WriteLine("Enter an option: ");
-                Console.WriteLine("+ : Addition");
-                Console.WriteLine("- : Subtraction");
-                Console.WriteLine("* : Mulitplication");
-                Console.WriteLine("/ : Division");
-
-                switch (Console.ReadLine())
+                try
                 {
+                    Console.WriteLine("Enter a number: ");
+                    num1 = Convert.ToDouble(Console.ReadLine());
 
-                    case "+":
-                        result = num1 + num2;
-                        Console.WriteLine($"Your result: {num1} + {num2} = " + result);
-                        break;
-                    case "-":
-                        result = num1 - num2;
-                        Console.WriteLine($"Your result: {num1} - {num2} = " + result);
-                        break;
-                    case "*":
-                        result = num1 * num2;
-                        Console.WriteLine($"Your result: {num1} * {num2} = " + result);
-                        break;
-                    case "/":
-                        result = num1 / num2;
-                        Console.WriteLine($"Your result: {num1} / {num2} = " + result);
-                        break;
-                    default:
-                        Console.WriteLine("That is not a valid option");
-                        break;
+                    Console.WriteLine("Enter a number: ");
+                    num2 = Convert.ToDouble(Console.ReadLine());
+
+                    Console.WriteLine("Enter an option: ");
+                    Console.WriteLine("+ : Addition");
+                    Console.WriteLine("- : Subtraction");
+                    Console.WriteLine("* : Mulitplication");
+                    Console.WriteLine("/ : Division");
+
+                    switch (Console.ReadLine())
+                    {
+
+                        case "+":
+                            result = num1 + num2;
+                            Console.WriteLine($"Your result: {num1} + {num2} = " + result);
+                            break;
+                        case "-":
+                            result = num1 - num2;
+                            Console.WriteLine($"Your result: {num1} - {num2} = " + result);
+                            break;
+                        case "*":
+                            result = num1 * num2;
+                            Console.WriteLine($"Your result: {num1} * {num2} = " + result);
+                            break;
+                        case "/":
+                            result = num1 / num2;
+                            if (num2 == 0)
+                            {
+                                Console.WriteLine("You can't divide by 0");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Your result: {num1} / {num2} = " + result);
+                            }
+                            break;
+                        default:
+                            Console.WriteLine("That is not a valid option");
+                            break;
+
+                    }
                 }
+                catch (FormatException e)
+                {
+                    Console.WriteLine("Please enter only numbers");
+                }
+               
                 Console.WriteLine("Do you want to continue? Y/N");
             } while(Console.ReadLine().ToUpper() == "Y");
 
